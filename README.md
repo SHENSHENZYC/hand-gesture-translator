@@ -81,7 +81,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) fi
 
 ## Acknowledgements
 
-- The hand landmarks detection and tracking is powered by Google's Mediapipe package (link to Mediapipe).
+- The hand landmarks detection and tracking is powered by [Google's Mediapipe package](https://developers.google.com/mediapipe).
 - Special thanks to the contributors of the open-source libraries used in this project.
 
 ## Contact
