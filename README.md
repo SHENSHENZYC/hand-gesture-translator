@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
 To use the tool, follow these steps:
 
-1. Run the `livetest.py` script with the desired method (`landmark` or `cnn`):
+1. Run the `livecam_test.py` script with the desired method (`landmark` or `cnn`):
 
 ```bash
 python livecam_test.py --method landmark
