@@ -42,13 +42,13 @@ To use the tool, follow these steps:
 1. Run the `livetest.py` script with the desired method (`landmark` or `cnn`):
 
 ```bash
-python livetest.py --method landmark
+python livecam_test.py --method landmark
 ```
 
 or
 
 ```bash
-python livetest.py --method cnn
+python livecam_test.py --method cnn
 ```
 
 2. The script will start capturing live video from your webcam and display the predictions for your hand gestures on the screen.
