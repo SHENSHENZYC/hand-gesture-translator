@@ -70,6 +70,7 @@ def _landmark_predict():
 
 
 def _cnn_predict():
+    """Predict hand gestures using cropped images of hand by CNN."""
     K = 3
 
     cap = cv2.VideoCapture(0)
@@ -125,7 +126,6 @@ def _cnn_predict():
 
     cap.release()
     cv2.destroyAllWindows()
-
 
 
 def main():
