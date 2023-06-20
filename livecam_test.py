@@ -12,16 +12,16 @@ from cnn_approach_src.train_classifier import HandClassifier, label_idx_converte
 from cnn_approach_src.crop_imgs import make_annotation_box, make_bbox
     
 
-def _landmark_predict():
+def _landmark_predict(webcam_index, topk):
     """Predict hand gestures using hand landmarks."""
-    K = 3
+    K = topk
 
     # load model
     with open('model/best_landmark_clf.pkl', 'rb') as f:
         model = pickle.load(f)
 
     ## present hand landmarks and sign alphabet predictions on live cam
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(webcam_index)
     if not cap.isOpened():
         print("ERROR: web cam access failed. Please adjust web cam accessibility and try again.")
         return
@@ -69,11 +69,11 @@ def _landmark_predict():
     cv2.destroyAllWindows()
 
 
-def _cnn_predict():
+def _cnn_predict(webcam_index, topk):
     """Predict hand gestures using cropped images of hand by CNN."""
-    K = 3
+    K = topk
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(webcam_index)
     if not cap.isOpened():
         print("ERROR: web cam access failed. Please adjust web cam accessibility and try again.")
         return
@@ -132,17 +132,21 @@ def main():
     """Entry point of the program."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--method", required=True, choices=['landmark', 'cnn'], help="Method to translate hand gesture to sign language MNIST: choose \"landmark\" or \"cnn\"")
+    parser.add_argument("--webcam_index", type=int, help="Index of web cam to use", default=0)
+    parser.add_argument("--topk", type=int, help="Number of top classes to show", default=3)
 
     args = parser.parse_args()
     args_config = dict()
     for arg in vars(args):
         args_config[arg] = getattr(args, arg)
     method = args_config.get('method').strip().lower()
+    webcam_index = args_config.get('webcam_index')
+    topk = args_config.get('topk')
 
     if method == 'landmark':
-        _landmark_predict()
+        _landmark_predict(webcam_index, topk)
     else:
-        _cnn_predict()
+        _cnn_predict(webcam_index, topk)
 
 
 if __name__ == "__main__":

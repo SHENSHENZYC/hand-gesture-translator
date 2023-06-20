@@ -51,7 +51,11 @@ or
 python livecam_test.py --method cnn
 ```
 
-2. The script will start capturing live video from your webcam and display the predictions for your hand gestures on the screen.
+2. There are two optional arguments that can be specified when running the script:
+   - `--webcam_index`: The index of the webcam to use on your local machine. Defaults to 0.
+   - `--topk`: The number of predictions to display on the screen. Defaults to 3.
+
+3. The script will start capturing live video from your webcam and display the predictions for your hand gestures on the screen.
 
 ## Dataset and Privacy
 
